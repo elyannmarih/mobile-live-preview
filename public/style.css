@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #f0f0f0;
+}
+
+.phone {
+  width: 375px;
+  height: 667px;
+  border: 14px solid #222;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background: white;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
