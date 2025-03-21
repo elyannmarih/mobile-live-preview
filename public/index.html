@@ -6,9 +6,56 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="phone">
-    <iframe src="{{URL}}" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
-      </iframe>
+    <div class="controls">
+      <button id="phone-icon" class="icon-btn">📱</button>
+      <button id="palette-icon" class="icon-btn">🎨</button>
+
+      <div class="dropdown phone-type" id="phone-dropdown">
+        <select name="phone" id="phone">
+          <option value="iPhone14Pro">iPhone 14 Pro</option>
+        </select>
+      </div>
+
+      <div class="dropdown bg-color-picker" id="color-dropdown">
+        <input type="color" id="bgColor" value="#ffffff" />
+      </div>
     </div>
+
+    <div class="iPhone14Pro" id="phone-frame">
+      <div class="speaker"></div>
+      <div class="dynamicIsland"></div>
+      <div class="screen">
+        <div class="touchScren">
+          <iframe
+            src="{{URL}}"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const phoneBtn = document.getElementById("phone-icon");
+      const paletteBtn = document.getElementById("palette-icon");
+      const phoneDropdown = document.getElementById("phone-dropdown");
+      const colorDropdown = document.getElementById("color-dropdown");
+      const bgColorPicker = document.getElementById("bgColor");
+
+      phoneBtn.addEventListener("click", () => {
+        phoneDropdown.style.display =
+          phoneDropdown.style.display === "block" ? "none" : "block";
+        colorDropdown.style.display = "none";
+      });
+
+      paletteBtn.addEventListener("click", () => {
+        colorDropdown.style.display =
+          colorDropdown.style.display === "block" ? "none" : "block";
+        phoneDropdown.style.display = "none";
+      });
+
+      bgColorPicker.addEventListener("input", (e) => {
+        document.body.style.background = e.target.value;
+      });
+    </script>
   </body>
 </html>

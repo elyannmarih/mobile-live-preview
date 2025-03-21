@@ -6,11 +6,10 @@ export function activate(context: vscode.ExtensionContext) {
   console.log('Your extension "mobile-live-preview" is now active!');
 
   const disposable = vscode.commands.registerCommand(
-    "mobile-live-preview.helloWorld",
+    "mobile-live-preview",
     async () => {
       const url = await vscode.window.showInputBox({
         prompt: "Enter the URL to preview (e.g., http://localhost:5500/)",
-        value: "http://127.0.0.1:5500/",
       });
 
       if (!url) {

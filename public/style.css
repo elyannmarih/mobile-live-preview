@@ -4,21 +4,119 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: #f0f0f0;
+  background: transparent;
+  position: relative;
 }
 
-.phone {
-  width: 375px;
-  height: 667px;
-  border: 14px solid #222;
-  border-radius: 40px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+.controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
   background: white;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-iframe {
+select,
+input[type="color"] {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.iPhone14Pro {
+  width: 393px;
+  height: 852px;
+  background: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.speaker {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  background: #444;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.dynamicIsland {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 36px;
+  background: black;
+  border-radius: 18px;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.screen {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 385px;
+  height: 844px;
+  background: #000;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.touchScren {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px 4px;
+  box-sizing: border-box;
+}
+
+.touchScren iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 32px;
+  overflow-y: auto;
+}
+
+iframe::-webkit-scrollbar {
+  width: 4px;
+}
+
+iframe::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }

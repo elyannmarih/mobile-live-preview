@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "mobile-live-preview.helloWorld",
-        "title": "Hello World"
+        "command": "mobile-live-preview",
+        "title": "Mobile Live Preview"
       }
     ]
   },
