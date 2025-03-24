@@ -9,6 +9,7 @@
     <div class="controls">
       <button id="phone-icon" class="icon-btn">📱</button>
       <button id="palette-icon" class="icon-btn">🎨</button>
+      <button id="qr-icon" class="icon-btn">🔗</button>
 
       <div class="dropdown phone-type" id="phone-dropdown">
         <select name="phone" id="phone">
@@ -18,6 +19,11 @@
 
       <div class="dropdown bg-color-picker" id="color-dropdown">
         <input type="color" id="bgColor" value="#ffffff" />
+      </div>
+
+      <div class="dropdown qr-code" id="qr-dropdown">
+        <img id="qrImage" src="{{QRCODE}}" alt="QR Code" />
+        <p>Scan on your phone</p>
       </div>
     </div>
 
@@ -34,27 +40,39 @@
     <script>
       const phoneBtn = document.getElementById("phone-icon");
       const paletteBtn = document.getElementById("palette-icon");
+      const qrBtn = document.getElementById("qr-icon");
+
       const phoneDropdown = document.getElementById("phone-dropdown");
       const colorDropdown = document.getElementById("color-dropdown");
+      const qrDropdown = document.getElementById("qr-dropdown");
+
       const bgColorPicker = document.getElementById("bgColor");
 
       phoneBtn.addEventListener("click", () => {
         phoneDropdown.style.display =
           phoneDropdown.style.display === "block" ? "none" : "block";
         colorDropdown.style.display = "none";
+        qrDropdown.style.display = "none";
       });
 
       paletteBtn.addEventListener("click", () => {
         colorDropdown.style.display =
           colorDropdown.style.display === "block" ? "none" : "block";
         phoneDropdown.style.display = "none";
+        qrDropdown.style.display = "none";
+      });
+
+      qrBtn.addEventListener("click", () => {
+        qrDropdown.style.display =
+          qrDropdown.style.display === "block" ? "none" : "block";
+        phoneDropdown.style.display = "none";
+        colorDropdown.style.display = "none";
       });
 
       bgColorPicker.addEventListener("input", (e) => {
         document.body.style.background = e.target.value;
       });
 
-      // Listen for reload from the extension
       window.addEventListener("message", (event) => {
         if (event.data.type === "reload") {
           const iframe = document.getElementById("preview-iframe");
