@@ -24,18 +24,14 @@
           "when": "resourceExtname =~ /\\.(html|htm)$/i",
           "group": "navigation"
         }
-      ]
-    },
-    "configuration": {
-      "type": "object",
-      "title": "Mobile Live Preview Configuration",
-      "properties": {
-        "mobileLivePreview.port": {
-          "type": "number",
-          "default": 5500,
-          "description": "Fallback port for Mobile Live Preview when no Live Server port is configured."
+      ],
+      "editor/context": [
+        {
+          "command": "mobile-live-preview",
+          "when": "resourceExtname =~ /\\.(html|htm)$/i",
+          "group": "navigation"
         }
-      }
+      ]
     }
   },
   "scripts": {

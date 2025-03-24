@@ -27,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.ViewColumn.Two,
         {
           enableScripts: true,
+          retainContextWhenHidden: true,
           localResourceRoots: [
             vscode.Uri.file(path.join(context.extensionPath, "public")),
           ],
@@ -36,8 +37,10 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.html = getHtml(panel, context, url);
       vscode.window.showInformationMessage(`Preview running at ${url}`);
 
-      vscode.workspace.onDidSaveTextDocument(() => {
-        panel.webview.postMessage({ type: "reload" });
+      vscode.workspace.onDidSaveTextDocument((doc) => {
+        if (doc.uri.fsPath.startsWith(workspaceFolder)) {
+          panel.webview.postMessage({ type: "reload" });
+        }
       });
     }
   );
