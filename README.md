@@ -29,7 +29,7 @@
 > Your app may display:
 >
 > - Black bars (status bar, safe areas) on a real mobile browser.
-> - Slightly different scroll or viewport behavior in a native wrapper (e.g., Capacitor or React Native WebView).
+> - Slightly different scroll or viewport behavior in a native wrapper.
 
 **This extension is meant for quick visual checks and prototyping, not as a replacement for real-device testing.**
 
@@ -41,3 +41,10 @@ To preview your app on your mobile device, make sure:
 
 - Your PC and phone are connected to the same Wi-Fi network.
 - The QR code points to your **local IP** (e.g., `http://192.168.x.x:3000`).
+
+---
+
+## 💡 Future Improvements
+
+- Support for more device frames (Android, iPad, iPhones, etc.).
+- Advanced network settings for QR generation.
