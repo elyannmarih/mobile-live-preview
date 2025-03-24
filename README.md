@@ -1,71 +1,43 @@
-# mobile-live-preview README
+# 📱 Mobile Live Preview - VS Code Extension
 
-This is the README for your extension "mobile-live-preview". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+**Mobile Live Preview** is a Visual Studio Code extension that allows you to preview your website inside a mobile frame directly within VS Code. Speed up your responsive design workflow by simulating how your app would look on mobile devices without switching to a browser.
 
 ---
 
-## Following extension guidelines
+## ✨ Features
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- 📱 Mobile frame simulation (e.g., iPhone 14 Pro)
+- 🎨 Custom background color picker
+- 🖼️ QR code generation to preview the app on your physical phone
+- 🔄 Auto-reload when you save files
+- 🌐 Local web server (no need for additional live-server extensions)
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+---
 
-## Working with Markdown
+## 🚀 How it works
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+1. Right-click an `.html` file and select **"Open in Mobile Live Preview"**.
+2. A new panel opens with your app inside a mobile frame.
+3. You can scan the QR code to preview your app on your phone.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+---
 
-## For more information
+## ⚠️ Disclaimer
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+> The mobile preview inside this extension aims to simulate a mobile device, but it **does not exactly match** a real device environment or native app behavior.
+>
+> Your app may display:
+>
+> - Black bars (status bar, safe areas) on a real mobile browser.
+> - Slightly different scroll or viewport behavior in a native wrapper (e.g., Capacitor or React Native WebView).
 
-**Enjoy!**
+**This extension is meant for quick visual checks and prototyping, not as a replacement for real-device testing.**
+
+---
+
+## 📡 Local Network QR Code
+
+To preview your app on your mobile device, make sure:
+
+- Your PC and phone are connected to the same Wi-Fi network.
+- The QR code points to your **local IP** (e.g., `http://192.168.x.x:3000`).
