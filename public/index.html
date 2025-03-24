@@ -76,7 +76,8 @@
       window.addEventListener("message", (event) => {
         if (event.data.type === "reload") {
           const iframe = document.getElementById("preview-iframe");
-          iframe.contentWindow.location.reload();
+          const currentSrc = iframe.src;
+          iframe.src = currentSrc;
         }
       });
     </script>
