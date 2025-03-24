@@ -1,14 +1,13 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
+import express from "express";
 import * as http from "http";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Your extension "mobile-live-preview" is now active!');
-
   const disposable = vscode.commands.registerCommand(
     "mobile-live-preview",
-    async (fileUri: vscode.Uri) => {
+    async () => {
       const workspaceFolder =
         vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
       if (!workspaceFolder) {
@@ -18,68 +17,49 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      const relativePath = path
-        .relative(workspaceFolder, fileUri.fsPath)
-        .replace(/\\/g, "/");
+      const port = await findAvailablePort(3000);
+      startStaticServer(workspaceFolder, port);
 
-      try {
-        const port = await resolveDynamicPort();
-        const url = `http://localhost:${port}/${relativePath}`;
+      const url = `http://localhost:${port}`;
+      const panel = vscode.window.createWebviewPanel(
+        "simplePreview",
+        "Mobile Live Preview",
+        vscode.ViewColumn.Two,
+        {
+          enableScripts: true,
+          localResourceRoots: [
+            vscode.Uri.file(path.join(context.extensionPath, "public")),
+          ],
+        }
+      );
 
-        const panel = vscode.window.createWebviewPanel(
-          "simplePreview",
-          "Mobile Live Preview",
-          vscode.ViewColumn.Two,
-          {
-            enableScripts: true,
-            localResourceRoots: [
-              vscode.Uri.file(path.join(context.extensionPath, "public")),
-            ],
-          }
-        );
+      panel.webview.html = getHtml(panel, context, url);
+      vscode.window.showInformationMessage(`Preview running at ${url}`);
 
-        panel.webview.html = getHtml(panel, context, url);
-      } catch (err) {
-        vscode.window.showErrorMessage(
-          "Could not find an active local server. Please ensure Live Server or your custom server is running."
-        );
-      }
+      vscode.workspace.onDidSaveTextDocument(() => {
+        panel.webview.postMessage({ type: "reload" });
+      });
     }
   );
 
   context.subscriptions.push(disposable);
 }
 
-async function resolveDynamicPort(): Promise<number> {
-  const liveServerPort = vscode.workspace
-    .getConfiguration("liveServer")
-    .get<number>("settings.port");
-
-  const fallbackPort =
-    vscode.workspace
-      .getConfiguration("mobileLivePreview")
-      .get<number>("port") || 5500;
-
-  let port = liveServerPort || fallbackPort;
-
-  while (!(await isPortActive(port))) {
-    port++;
-    if (port > 5600) {
-      throw new Error("No available port found.");
-    }
-  }
-
-  return port;
+function startStaticServer(folder: string, port: number) {
+  const app = express();
+  app.use(express.static(folder));
+  app.listen(port, () => {
+    console.log(`Static server running on http://localhost:${port}`);
+  });
 }
 
-function isPortActive(port: number): Promise<boolean> {
+function findAvailablePort(startPort: number): Promise<number> {
   return new Promise((resolve) => {
-    const req = http.get({ host: "localhost", port, timeout: 500 }, () => {
-      req.destroy();
-      resolve(true);
+    const server = http.createServer();
+    server.listen(startPort, () => {
+      server.close(() => resolve(startPort));
     });
-    req.on("error", () => resolve(false));
-    req.on("timeout", () => resolve(false));
+    server.on("error", () => resolve(findAvailablePort(startPort + 1)));
   });
 }
 

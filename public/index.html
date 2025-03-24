@@ -27,6 +27,7 @@
       <div class="screen">
         <div class="touchScren">
           <iframe
+            id="preview-iframe"
             src="{{URL}}"
             sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
           ></iframe>
@@ -55,6 +56,14 @@
 
       bgColorPicker.addEventListener("input", (e) => {
         document.body.style.background = e.target.value;
+      });
+
+      // Listen for reload from the extension
+      window.addEventListener("message", (event) => {
+        if (event.data.type === "reload") {
+          const iframe = document.getElementById("preview-iframe");
+          iframe.contentWindow.location.reload();
+        }
       });
     </script>
   </body>
