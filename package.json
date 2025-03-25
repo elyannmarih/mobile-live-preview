@@ -35,7 +35,7 @@
     }
   },
   "scripts": {
-    "bundle": "esbuild src/extension.ts --bundle --platform=node --outfile=out/extension.js",
+    "bundle": "esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=out/extension.js",
     "vscode:prepublish": "npm run bundle",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
