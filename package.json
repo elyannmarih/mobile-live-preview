@@ -1,5 +1,6 @@
 {
   "name": "mobile-live-preview",
+  "publisher": "ElyannSoto",
   "displayName": "Mobile Live Preview",
   "description": "Instantly preview your website inside a mobile frame, live from VS Code! Speed up your responsive design workflow and get that 'phone feel' without switching to your browser.",
   "version": "0.0.1",
