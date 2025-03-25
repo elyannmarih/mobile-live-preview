@@ -19,6 +19,7 @@
 
       <div class="dropdown bg-color-picker" id="color-dropdown">
         <input type="color" id="bgColor" value="#ffffff" />
+        <button id="resetColor">✖</button>
       </div>
 
       <div class="dropdown qr-code" id="qr-dropdown">
@@ -49,6 +50,7 @@
       const qrDropdown = document.getElementById("qr-dropdown");
 
       const bgColorPicker = document.getElementById("bgColor");
+      const resetColorBtn = document.getElementById("resetColor");
 
       phoneBtn.addEventListener("click", () => {
         phoneDropdown.style.display =
@@ -73,6 +75,10 @@
 
       bgColorPicker.addEventListener("input", (e) => {
         document.body.style.background = e.target.value;
+      });
+
+      resetColorBtn.addEventListener("click", () => {
+        document.body.style.background = "transparent";
       });
 
       window.addEventListener("message", (event) => {

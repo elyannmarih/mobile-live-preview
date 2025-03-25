@@ -46,6 +46,12 @@ input[type="color"] {
   border: 1px solid #ccc;
 }
 
+#resetColor {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .iPhone14Pro {
   width: 393px;
   height: 852px;
