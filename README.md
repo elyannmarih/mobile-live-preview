@@ -2,7 +2,7 @@
 
 **Mobile Live Preview** is a Visual Studio Code extension that allows you to preview your website inside a mobile frame directly within VS Code. Speed up your responsive design workflow by simulating how your app would look on mobile devices without switching to a browser.
 
----
+## <p> <img src="images/vertical.png" alt="iPhone preview vertical" width="250"/> <img src="images/horizontal.png" alt="iPhone preview horizontal" width="250"/> </p>
 
 ## ✨ Features
 
@@ -10,7 +10,7 @@
 - 🎨 Custom background color picker
 - 🖼️ QR code generation to preview the app on your physical phone
 - 🔄 Auto-reload when you save files
-- 🌐 Local web server (no need for additional live-server extensions)
+- 🌐 Local web server
 
 ---
 
@@ -47,4 +47,3 @@ To preview your app on your mobile device, make sure:
 ## 💡 Future Improvements
 
 - Support for more device frames (Android, iPad, iPhones, etc.).
-- Advanced network settings for QR generation.
