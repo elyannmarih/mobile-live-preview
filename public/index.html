@@ -35,13 +35,30 @@
 
         <div class="touchScreen">
           <div class="dynamicIsland"></div>
-          <iframe id="preview-iframe" src="{{URL}}"></iframe>
+          <iframe id="preview-iframe"></iframe>
           <div class="home-indicator"></div>
         </div>
       </div>
     </div>
 
     <script>
+      const vscodeApi = acquireVsCodeApi();
+      const iframe = document.getElementById("preview-iframe");
+
+      window.addEventListener("DOMContentLoaded", () => {
+        vscodeApi.postMessage({ type: "get-start-url" });
+      });
+
+      window.addEventListener("message", (event) => {
+        if (event.data.type === "start-url") {
+          iframe.src = event.data.url;
+        }
+
+        if (event.data.type === "reload") {
+          iframe.src = iframe.src;
+        }
+      });
+
       const phoneBtn = document.getElementById("phone-icon");
       const paletteBtn = document.getElementById("palette-icon");
       const qrBtn = document.getElementById("qr-icon");
@@ -85,18 +102,8 @@
         document.body.style.background = "transparent";
       });
 
-      window.addEventListener("message", (event) => {
-        if (event.data.type === "reload") {
-          const iframe = document.getElementById("preview-iframe");
-          const currentSrc = iframe.src;
-          iframe.src = currentSrc;
-        }
-      });
-
       rotatePhoneBtn.addEventListener("click", () => {
         phoneFrame.classList.toggle("landscape");
-        const iframe = document.getElementById("preview-iframe");
-
         iframe.classList.toggle("rotate-content");
       });
     </script>

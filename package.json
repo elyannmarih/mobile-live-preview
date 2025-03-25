@@ -55,5 +55,13 @@
   "dependencies": {
     "express": "^4.21.2",
     "qrcode": "^1.5.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elyann-soto/mobile-live-preview"
+  },
+  "bugs": {
+    "url": "https://github.com/elyann-soto/mobile-live-preview/issues"
+  },
+  "homepage": "https://github.com/elyann-soto/mobile-live-preview#readme"
 }

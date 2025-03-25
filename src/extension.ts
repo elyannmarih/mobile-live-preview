@@ -23,7 +23,12 @@ export function activate(context: vscode.ExtensionContext) {
       startStaticServer(workspaceFolder, port);
 
       const ip = getLocalIP();
-      const url = `http://${ip}:${port}`;
+      const activeFilePath =
+        vscode.window.activeTextEditor?.document.uri.fsPath;
+      const relativePath = activeFilePath
+        ?.replace(workspaceFolder, "")
+        .replace(/\\/g, "/");
+      const url = `http://${ip}:${port}${relativePath}`;
 
       const panel = vscode.window.createWebviewPanel(
         "simplePreview",
@@ -39,14 +44,21 @@ export function activate(context: vscode.ExtensionContext) {
       );
 
       const qrDataURL = await qrcode.toDataURL(url);
-      panel.webview.html = getHtml(panel, context, url, qrDataURL);
-      vscode.window.showInformationMessage(`Preview running at ${url}`);
+      panel.webview.html = getHtml(panel, context, "", qrDataURL);
+
+      panel.webview.onDidReceiveMessage((message) => {
+        if (message.type === "get-start-url") {
+          panel.webview.postMessage({ type: "start-url", url });
+        }
+      });
 
       vscode.workspace.onDidSaveTextDocument((doc) => {
         if (doc.uri.fsPath.startsWith(workspaceFolder)) {
           panel.webview.postMessage({ type: "reload" });
         }
       });
+
+      vscode.window.showInformationMessage(`Preview running at ${url}`);
     }
   );
 
