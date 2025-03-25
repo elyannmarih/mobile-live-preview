@@ -2,8 +2,8 @@
   "name": "mobile-live-preview",
   "publisher": "ElyannSoto",
   "displayName": "Mobile Live Preview",
-  "description": "Instantly preview your website inside a mobile frame, live from VS Code! Speed up your responsive design workflow and get that 'phone feel' without switching to your browser.",
-  "version": "0.0.1",
+  "description": "Instantly preview your website inside a mobile frame, live from VS Code!",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.98.0"
   },
@@ -61,12 +61,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elyann-soto/mobile-live-preview"
+    "url": "https://github.com/elyannmarih/mobile-live-preview"
   },
   "bugs": {
-    "url": "https://github.com/elyann-soto/mobile-live-preview/issues"
+    "url": "https://github.com/elyannmarih/mobile-live-preview/issues"
   },
-  "homepage": "https://github.com/elyann-soto/mobile-live-preview#readme",
-  "icon": "icon.png",
+  "homepage": "https://github.com/elyannmarih/mobile-live-preview#readme",
+  "icon": "images/icon.png",
   "license": "MIT"
 }
