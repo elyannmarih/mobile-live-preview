@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   background: transparent;
@@ -9,28 +10,31 @@ body {
 }
 
 .controls {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   display: flex;
+  align-items: center;
   gap: 10px;
-  z-index: 10;
+  z-index: 1;
 }
 
 .icon-btn {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.381);
   border: none;
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
   font-size: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: ease-in-out;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.776);
 }
 
 .dropdown {
   display: none;
   position: absolute;
-  top: 50px;
+  top: 10px;
   right: 0;
   background: white;
   border-radius: 8px;
@@ -60,7 +64,7 @@ input[type="color"] {
   border: 2px solid black;
   border-radius: 55px;
   position: relative;
-  overflow: hidden;
+
   z-index: 0;
   transform: scale(0.9);
 }
@@ -84,10 +88,9 @@ input[type="color"] {
   transform: translateX(-50%);
   width: 130px;
   height: 36px;
-  background: black;
+  background: #000;
   border-radius: 18px;
   z-index: 1;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .screen {
@@ -130,7 +133,32 @@ input[type="color"] {
   transform: translateX(-50%);
   width: 134px;
   height: 5px;
-  background: #444;
+  background: #000;
   border-radius: 8px;
   z-index: 1;
+}
+
+.iPhone14Pro.landscape {
+  transform: scale(0.9) rotate(90deg);
+  transform-origin: center;
+}
+
+.touchScreen iframe.rotate-content {
+  transform: scale(0.96) rotate(-90deg);
+  transform-origin: center;
+  width: 844px;
+  height: 385px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.iPhone14Pro.landscape .home-indicator {
+  top: 50%;
+  left: 100%;
+  transform: translate(-58%, -50%) rotate(-90deg);
+  transform-origin: center;
+  width: 200px;
+  height: 5px;
 }

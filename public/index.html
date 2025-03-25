@@ -10,6 +10,7 @@
       <button id="phone-icon" class="icon-btn">📱</button>
       <button id="palette-icon" class="icon-btn">🎨</button>
       <button id="qr-icon" class="icon-btn">🔗</button>
+      <button id="rotate-icon" class="icon-btn">🔁</button>
 
       <div class="dropdown phone-type" id="phone-dropdown">
         <select name="phone" id="phone">
@@ -52,6 +53,9 @@
       const bgColorPicker = document.getElementById("bgColor");
       const resetColorBtn = document.getElementById("resetColor");
 
+      const rotatePhoneBtn = document.getElementById("rotate-icon");
+      const phoneFrame = document.getElementById("phone-frame");
+
       phoneBtn.addEventListener("click", () => {
         phoneDropdown.style.display =
           phoneDropdown.style.display === "block" ? "none" : "block";
@@ -87,6 +91,13 @@
           const currentSrc = iframe.src;
           iframe.src = currentSrc;
         }
+      });
+
+      rotatePhoneBtn.addEventListener("click", () => {
+        phoneFrame.classList.toggle("landscape");
+        const iframe = document.getElementById("preview-iframe");
+
+        iframe.classList.toggle("rotate-content");
       });
     </script>
   </body>
