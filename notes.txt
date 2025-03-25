@@ -1,0 +1,4 @@
+Fix:
+- Anadir screen record or screen snip
+- hacer el iframe mas pequeno igual al celular
+- Ver porque en el iframe no aparece exacto al native app con el scroll bar
