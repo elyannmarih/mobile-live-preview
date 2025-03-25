@@ -63,5 +63,7 @@
   "bugs": {
     "url": "https://github.com/elyann-soto/mobile-live-preview/issues"
   },
-  "homepage": "https://github.com/elyann-soto/mobile-live-preview#readme"
+  "homepage": "https://github.com/elyann-soto/mobile-live-preview#readme",
+  "icon": "images/icon.png",
+  "license": "MIT"
 }
