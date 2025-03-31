@@ -3,7 +3,7 @@
   "publisher": "ElyannSoto",
   "displayName": "Mobile Live Preview",
   "description": "Instantly preview your website inside a mobile frame, live from VS Code!",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.98.0"
   },

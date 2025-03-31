@@ -1,19 +1,27 @@
-# VS Code settings and test configs
 .vscode/**
 .vscode-test/**
 
-# Source code 
-src/**
-**/*.ts
-**/*.map
 
-# Config files not needed in package
-.gitignore
-.yarnrc
-tsconfig.json
-eslint.config.mjs
+**/*.test.*
+**/*.spec.*
+*.log
+coverage/
 .vscode-test.*
 
+src/**
+**/*.ts
+**/*.tsx
+**/*.map
 
-# VS Code template file 
+
+.gitignore
+tsconfig.json
+*.config.js
+*.config.mjs
+.yarnrc
+package-lock.json
+
+
+node_modules/
+
 vsc-extension-quickstart.md
